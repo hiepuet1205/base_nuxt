@@ -40,7 +40,6 @@ export default {
     ...mapState({
       isAuthenticated: state => state.auth.isAuthenticated,
       user: state => state.auth.user,
-
     }),
     isLogin() {
       return this.$route.name === 'login';

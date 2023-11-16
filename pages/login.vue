@@ -5,7 +5,7 @@
 </template>
   
 <script>
-import LoginForm from '@/components/LoginForm.vue';
+import LoginForm from '~/components/login/LoginForm.vue';
 import Base from '@/layouts/Base.vue';
 
 export default ({
