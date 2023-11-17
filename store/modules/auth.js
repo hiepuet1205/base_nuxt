@@ -53,7 +53,7 @@ const auth = {
     setRedirectPath(context, payload) {
       context.commit('setRedirectPath', payload)
     },
-    async login({ commit, getters }, { username, password }) {
+    async login({ commit, getters, state }, { username, password }) {
       const apiUrl = getters.getApiUrl;
       const res = await fetch(`${apiUrl}auth/login`, {
         headers: {
@@ -68,7 +68,7 @@ const auth = {
         commit('setUser', data.user);
         commit('setToken', data.access_token);
         commit('setIsAuthenticated', true);
-        const redirectPath = this.$store.state.auth.redirectPath || '/';
+        const redirectPath = state.redirectPath || '/';
         this.$router.push(redirectPath);
       } else {
         commit('setUser', null);
@@ -76,7 +76,7 @@ const auth = {
         commit('setIsAuthenticated', false);
       }
     },
-    async register({ commit, getters }, { username, password }) {
+    async register({ commit, getters, state }, { username, password }) {
       const apiUrl = getters.getApiUrl;
       const res = await fetch(`${apiUrl}auth/register`, {
         headers: {
@@ -91,8 +91,8 @@ const auth = {
         commit('setUser', data.user);
         commit('setToken', data.access_token);
         commit('setIsAuthenticated', true);
-        const redirectPath = this.$store.state.auth.redirectPath || '/'
-        this.$router.push(redirectPath)
+        const redirectPath = state.redirectPath || '/';
+        this.$router.push(redirectPath);
       } else {
         commit('setUser', null);
         commit('setToken', null);
