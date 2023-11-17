@@ -1,4 +1,4 @@
-const apiUrl = 'http://localhost:8082/districts/';
+const apiUrl = `${process.env.API_MASTER}districts/`;
 
 export const getAllDistricts = async () => {
   try {

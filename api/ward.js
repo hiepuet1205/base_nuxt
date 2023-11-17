@@ -1,4 +1,4 @@
-const apiUrl = 'http://localhost:8082/wards/';
+const apiUrl = `${process.env.API_MASTER}wards/`;
 
 export const getAllWards = async () => {
   try {

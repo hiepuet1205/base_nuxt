@@ -1,6 +1,8 @@
+const apiUrl = process.env.API_AUTH || 'http://localhost:5000/';
+
 const auth = {
   state: {
-    apiUrl: 'http://localhost:5000/',
+    apiUrl: apiUrl,
     user: null,
     token: null,
     isAuthenticated: false,
