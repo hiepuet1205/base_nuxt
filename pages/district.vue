@@ -1,18 +1,18 @@
 <template>
   <Base>
-  <province-table slot="content"></province-table>
+  <district-table slot="content"></district-table>
   </Base>
 </template>
-
+  
 <script>
 import Base from '@/layouts/Base.vue';
-import ProvinceTable from '~/components/master/province/ProvinceTable.vue';
+import DistrictTable from '~/components/master/district/DistrictTable.vue';
 
 export default ({
   name: "Province",
   components: {
     Base,
-    ProvinceTable
+    DistrictTable
   }
 })
 </script>

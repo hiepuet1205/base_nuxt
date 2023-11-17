@@ -4,6 +4,7 @@ const auth = {
     user: null,
     token: null,
     isAuthenticated: false,
+    redirectPath: '/'
   },
   getters: {
     getApiUrl(state) {
@@ -18,6 +19,9 @@ const auth = {
     getIsAuthenticated(state) {
       return state.user !== null && state.user !== undefined;
     },
+    getRedirectPath(state) {
+      return state.redirectPath;
+    }
   },
   mutations: {
     setApiUrl(state, payload) {
@@ -32,6 +36,9 @@ const auth = {
     setIsAuthenticated(state, payload) {
       state.isAuthenticated = payload
     },
+    setRedirectPath(state, payload) {
+      state.redirectPath = payload
+    }
   },
   actions: {
     setApiUrl(context, payload) {
@@ -42,6 +49,9 @@ const auth = {
     },
     setIsAuthenticated(context, payload) {
       context.commit('setIsAuthenticated', payload)
+    },
+    setRedirectPath(context, payload) {
+      context.commit('setRedirectPath', payload)
     },
     async login({ commit, getters }, { username, password }) {
       const apiUrl = getters.getApiUrl;
@@ -58,8 +68,8 @@ const auth = {
         commit('setUser', data.user);
         commit('setToken', data.access_token);
         commit('setIsAuthenticated', true);
-        this.$router.push({ path: "/" })
-        // router.push('/')
+        const redirectPath = this.$store.state.auth.redirectPath || '/';
+        this.$router.push(redirectPath);
       } else {
         commit('setUser', null);
         commit('setToken', null);
@@ -81,8 +91,8 @@ const auth = {
         commit('setUser', data.user);
         commit('setToken', data.access_token);
         commit('setIsAuthenticated', true);
-        this.$router.push({ path: "/" })
-        // router.push('/')
+        const redirectPath = this.$store.state.auth.redirectPath || '/'
+        this.$router.push(redirectPath)
       } else {
         commit('setUser', null);
         commit('setToken', null);
@@ -94,7 +104,6 @@ const auth = {
       commit('setToken', null);
       commit('setIsAuthenticated', false);
       this.$router.push({ path: "/login" })
-      // router.push('/login')
     }
   }
 }
