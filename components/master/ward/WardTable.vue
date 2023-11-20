@@ -4,6 +4,7 @@
 </template>
         
 <script>
+import { mapState } from 'vuex';
 import { getAllWards, createWard, updateWard, deleteWard } from '../../../api/ward'
 import TableMaster from '../TableMaster.vue';
 export default ({
@@ -41,18 +42,23 @@ export default ({
   components: {
     TableMaster
   },
+  computed: {
+    ...mapState({
+      token: state => state.auth.token,
+    })
+  },
   methods: {
     async getAllItems() {
-      return await getAllWards();
+      return await getAllWards(this.token,);
     },
     async createItem(item) {
-      return await createWard(item)
+      return await createWard(this.token, item)
     },
     async updateItem(id, item) {
-      return await updateWard(id, item);
+      return await updateWard(this.token, id, item);
     },
     async deleteItem(id) {
-      return await deleteWard(id);
+      return await deleteWard(this.token, id);
     }
   },
 })

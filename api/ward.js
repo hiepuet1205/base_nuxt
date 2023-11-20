@@ -1,11 +1,11 @@
 const apiUrl = `${process.env.API_MASTER}wards/`;
 
-export const getAllWards = async () => {
+export const getAllWards = async (token) => {
   try {
     const response = await fetch(`${apiUrl}`, {
       headers: {
         'Accept': 'application/json',
-        // 'Authorization': `Bearer ${this.token}`
+        'Authorization': `Bearer ${token}`
       },
       method: "GET"
     });
@@ -17,12 +17,12 @@ export const getAllWards = async () => {
   }
 }
 
-export const getWard = async (id) => {
+export const getWard = async (tokenid) => {
   try {
     const response = await fetch(`${apiUrl}${id}`, {
       headers: {
         'Accept': 'application/json',
-        // 'Authorization': `Bearer ${this.token}`
+        'Authorization': `Bearer ${token}`
       },
       method: "GET"
     });
@@ -34,12 +34,12 @@ export const getWard = async (id) => {
   }
 }
 
-export const createWard = async (ward) => {
+export const createWard = async (tokenward) => {
   try {
     const response = await fetch(`${apiUrl}`, {
       headers: {
         'Accept': 'application/json',
-        // 'Authorization': `Bearer ${this.token}`
+        'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify(ward),
       method: "POST"
@@ -52,12 +52,12 @@ export const createWard = async (ward) => {
   }
 }
 
-export const updateWard = async (id, ward) => {
+export const updateWard = async (tokenid, ward) => {
   try {
     const response = await fetch(`${apiUrl}${id}`, {
       headers: {
         'Accept': 'application/json',
-        // 'Authorization': `Bearer ${this.token}`
+        'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify(ward),
       method: "PUT"
@@ -70,12 +70,12 @@ export const updateWard = async (id, ward) => {
   }
 }
 
-export const deleteWard = async (id) => {
+export const deleteWard = async (tokenid) => {
   try {
     await fetch(`${apiUrl}${id}`, {
       headers: {
         'Accept': 'application/json',
-        // 'Authorization': `Bearer ${this.token}`
+        'Authorization': `Bearer ${token}`
       },
       method: "DELETE"
     });

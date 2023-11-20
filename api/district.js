@@ -1,11 +1,11 @@
 const apiUrl = `${process.env.API_MASTER}districts/`;
 
-export const getAllDistricts = async () => {
+export const getAllDistricts = async (token) => {
   try {
     const response = await fetch(`${apiUrl}`, {
       headers: {
         'Accept': 'application/json',
-        // 'Authorization': `Bearer ${this.token}`
+        'Authorization': `Bearer ${token}`
       },
       method: "GET"
     });
@@ -17,12 +17,12 @@ export const getAllDistricts = async () => {
   }
 }
 
-export const getDistrict = async (id) => {
+export const getDistrict = async (token, id) => {
   try {
     const response = await fetch(`${apiUrl}${id}`, {
       headers: {
         'Accept': 'application/json',
-        // 'Authorization': `Bearer ${this.token}`
+        'Authorization': `Bearer ${token}`
       },
       method: "GET"
     });
@@ -34,12 +34,12 @@ export const getDistrict = async (id) => {
   }
 }
 
-export const createDistrict = async (district) => {
+export const createDistrict = async (token, district) => {
   try {
     const response = await fetch(`${apiUrl}`, {
       headers: {
         'Accept': 'application/json',
-        // 'Authorization': `Bearer ${this.token}`
+        'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify(district),
       method: "POST"
@@ -52,12 +52,12 @@ export const createDistrict = async (district) => {
   }
 }
 
-export const updateDistrict = async (id, district) => {
+export const updateDistrict = async (token, id, district) => {
   try {
     const response = await fetch(`${apiUrl}${id}`, {
       headers: {
         'Accept': 'application/json',
-        // 'Authorization': `Bearer ${this.token}`
+        'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify(district),
       method: "PUT"
@@ -70,12 +70,12 @@ export const updateDistrict = async (id, district) => {
   }
 }
 
-export const deleteDistrict = async (id) => {
+export const deleteDistrict = async (token, id) => {
   try {
     await fetch(`${apiUrl}${id}`, {
       headers: {
         'Accept': 'application/json',
-        // 'Authorization': `Bearer ${this.token}`
+        'Authorization': `Bearer ${token}`
       },
       method: "DELETE"
     });

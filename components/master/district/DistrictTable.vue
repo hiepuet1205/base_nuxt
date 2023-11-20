@@ -4,6 +4,7 @@
 </template>
     
 <script>
+import { mapState } from 'vuex';
 import { getAllDistricts, createDistrict, updateDistrict, deleteDistrict } from '../../../api/district';
 import TableMaster from '../TableMaster.vue';
 export default ({
@@ -38,18 +39,23 @@ export default ({
   components: {
     TableMaster
   },
+  computed: {
+    ...mapState({
+      token: state => state.auth.token,
+    })
+  },
   methods: {
     async getAllItems() {
-      return await getAllDistricts();
+      return await getAllDistricts(this.token);
     },
     async createItem(item) {
-      return await createDistrict(item)
+      return await createDistrict(this.token, item)
     },
     async updateItem(id, item) {
-      return await updateDistrict(id, item);
+      return await updateDistrict(this.token, id, item);
     },
     async deleteItem(id) {
-      return await deleteDistrict(id);
+      return await deleteDistrict(this.token, id);
     }
   },
 })

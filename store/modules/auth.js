@@ -66,9 +66,9 @@ const auth = {
         body: JSON.stringify({ username, password })
       });
       const data = await res.json();
-      if (data.access_token) {
-        commit('setUser', data.user);
-        commit('setToken', data.access_token);
+      if (data.id_token) {
+        // commit('setUser', data.user);
+        commit('setToken', data.id_token);
         commit('setIsAuthenticated', true);
         const redirectPath = state.redirectPath || '/';
         this.$router.push(redirectPath);
@@ -89,9 +89,9 @@ const auth = {
         body: JSON.stringify({ username, password })
       });
       const data = await res.json();
-      if (data.access_token) {
-        commit('setUser', data.user);
-        commit('setToken', data.access_token);
+      if (data.id_token) {
+        // commit('setUser', data.user);
+        commit('setToken', data.id_token);
         commit('setIsAuthenticated', true);
         const redirectPath = state.redirectPath || '/';
         this.$router.push(redirectPath);
