@@ -3,8 +3,13 @@
     <client-only>
       <l-map :zoom="zoom" :center="center">
         <l-tile-layer :url="url"></l-tile-layer>
+        <l-marker :lat-lng="center">
+          <l-tooltip :content="'Your address'"></l-tooltip>
+        </l-marker>
         <l-marker v-for="(point, index) in points" :key="index" :lat-lng="{ lat: point.lat, lng: point.lng }">
           <l-tooltip :content="point.name"></l-tooltip>
+          <l-icon
+            icon-url="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png" />
         </l-marker>
       </l-map>
     </client-only>
