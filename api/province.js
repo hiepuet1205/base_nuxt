@@ -1,4 +1,6 @@
-const apiUrl = `${process.env.API_MASTER}provinces/`;
+const apiMaster = process.env.API_MASTER || "http://localhost:8082/"
+
+const apiUrl = `${apiMaster}provinces/`;
 
 export const getAllProvinces = async (token) => {
   try {
