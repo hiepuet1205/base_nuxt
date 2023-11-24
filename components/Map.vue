@@ -1,7 +1,7 @@
 <template>
   <div id="map-wrap" style="height: 100vh">
     <client-only>
-      <l-map :zoom="zoom" :center="center">
+      <l-map :zoom="zoom" :center="center" @click="handleClickMap">
         <l-tile-layer :url="url"></l-tile-layer>
         <l-marker :lat-lng="center">
           <l-tooltip :content="'Your address'"></l-tooltip>
@@ -28,6 +28,11 @@ export default {
     center: Array,
     points: Array,
     zoom: Number,
+  },
+  methods: {
+    handleClickMap(e) {
+      this.$emit('updateLatLng', e.latlng.lat, e.latlng.lng)
+    }
   }
 };
 </script>
