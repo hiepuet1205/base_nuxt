@@ -9,7 +9,7 @@ import Base from '@/layouts/Base.vue';
 import WardTable from '~/components/master/ward/WardTable.vue';
 
 export default ({
-  name: "Province",
+  name: "Ward",
   components: {
     Base,
     WardTable

@@ -6,10 +6,12 @@
           <v-toolbar-title>{{ title }}</v-toolbar-title>
           <v-divider class="mx-4" inset vertical></v-divider>
           <v-spacer></v-spacer>
+          <v-btn color="primary" dark class="mb-2" @click="openDialogCreate">New Item</v-btn>
+
           <v-dialog v-model="dialog" max-width="500px">
-            <template v-slot:activator="{ on }">
+            <!-- <template v-slot:activator="{ on }">
               <v-btn color="primary" dark class="mb-2" v-on="on">New Item</v-btn>
-            </template>
+            </template> -->
             <v-card>
               <v-card-title>
                 <span class="headline">{{ formTitle }}</span>
@@ -110,6 +112,7 @@ export default ({
     },
 
     async save() {
+      console.log(this.editedItem)
       if (this.editedIndex > -1) {
         const data = await this.updateItem(this.editedItem.id, this.editedItem);
         this.editedItem = data;
@@ -125,6 +128,9 @@ export default ({
 
     async reset() {
       this.items = await this.getAllItems();
+    },
+    openDialogCreate() {
+      this.dialog = true;
     }
   },
 })

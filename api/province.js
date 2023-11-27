@@ -1,4 +1,5 @@
-const apiMaster = process.env.API_MASTER || "http://localhost:8082/"
+// const apiMaster = process.env.API_MASTER || "http://localhost:8082/"
+const apiMaster = process.env.API_MASTER || "http://localhost:5000/"
 
 const apiUrl = `${apiMaster}provinces/`;
 

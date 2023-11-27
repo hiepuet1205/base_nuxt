@@ -12,7 +12,7 @@ export default ({
   name: "Province",
   components: {
     Base,
-    ProvinceTable
+    ProvinceTable,
   }
 })
 </script>

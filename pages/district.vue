@@ -9,7 +9,7 @@ import Base from '@/layouts/Base.vue';
 import DistrictTable from '~/components/master/district/DistrictTable.vue';
 
 export default ({
-  name: "Province",
+  name: "District",
   components: {
     Base,
     DistrictTable
